@@ -10,6 +10,7 @@ import GetStarted from '../Screens/Auth/GetStarted';
 import Login from '../Screens/Auth/Login';
 import SignUp from '../Screens/Auth/SignUp';
 import EmailVerification from '../Screens/Auth/EmailVerification';
+import TermsOfUse from '../Screens/Auth/TermsOfUse';
 
 const Stack = createStackNavigator();
 
@@ -20,6 +21,7 @@ const Navigation = () => {
       <Stack.Screen name="Login" component={Login} />
       <Stack.Screen name="SignUp" component={SignUp} />
       <Stack.Screen name="EmailVerification" component={EmailVerification} />
+      <Stack.Screen name="TermsOfUse" component={TermsOfUse} />
       <Stack.Screen name="Home" component={Home} />
       <Stack.Screen name="Notification" component={Notification} />
       <Stack.Screen name="Market" component={Market} />

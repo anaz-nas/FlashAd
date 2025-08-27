@@ -4,5 +4,14 @@ import EyeOff from '../Assets/SVG/EyeOff.svg';
 import Logo from '../Assets/SVG/Logo.svg';
 import Camera from '../Assets/SVG/Camera.svg';
 import ArrowBack from '../Assets/SVG/ArrowBack.svg';
+import ArrowBackWhite from '../Assets/SVG/ArrowBackWhite.svg';
 
-export { ArrowForward, ArrowForward_red, EyeOff, Logo, Camera, ArrowBack };
+export {
+  ArrowForward,
+  ArrowForward_red,
+  EyeOff,
+  Logo,
+  Camera,
+  ArrowBack,
+  ArrowBackWhite,
+};

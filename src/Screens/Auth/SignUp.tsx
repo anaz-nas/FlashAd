@@ -39,7 +39,6 @@ const SignUp = ({ navigation }: any) => {
       return;
     }
 
-    // ✅ Navigate to Email Verification screen after successful validation
     navigation.navigate('EmailVerification' as never);
   };
 
@@ -115,8 +114,13 @@ const SignUp = ({ navigation }: any) => {
 
       <Text style={styles.termsText}>
         By signing up you agree to the{' '}
-        <Text style={styles.link}>Terms of Use</Text> and{' '}
-        <Text style={styles.link}>Privacy Policy</Text>.
+        <Text
+          style={styles.link}
+          onPress={() => navigation.navigate('TermsOfUse')}
+        >
+          Terms of Use
+        </Text>{' '}
+        and <Text style={styles.link}>Privacy Policy</Text>.
       </Text>
     </ScrollView>
   );
