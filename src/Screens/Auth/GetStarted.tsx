@@ -7,12 +7,13 @@ import {
   TouchableOpacity,
 } from 'react-native';
 import React from 'react';
+import { ArrowForward } from '../../Assets/svg';
 
 const GetStarted = () => {
   return (
     <View style={styles.container}>
       <ImageBackground
-        source={require('../../Assets/Get_Started.png')}
+        source={require('../../Assets/PNG/Get_Started.png')}
         style={styles.background}
         resizeMode="cover"
       >
@@ -29,7 +30,8 @@ const GetStarted = () => {
           </Text>
 
           <TouchableOpacity style={styles.button}>
-            <Text style={styles.buttonText}>Get Started →</Text>
+            <Text style={styles.buttonText}>Get Started</Text>
+            <ArrowForward height={24} width={24} />
           </TouchableOpacity>
         </View>
       </ImageBackground>
@@ -75,11 +77,14 @@ const styles = StyleSheet.create({
     paddingVertical: 14,
     paddingHorizontal: 24,
     alignSelf: 'flex-start',
+    flexDirection: 'row',
+    alignItems: 'center',
   },
   buttonText: {
     color: '#fff',
     fontSize: 16,
     fontWeight: '600',
+    marginRight: 10,
   },
 });
 
