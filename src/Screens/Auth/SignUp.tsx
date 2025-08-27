@@ -7,6 +7,7 @@ import {
   TouchableOpacity,
   Image,
   ScrollView,
+  Alert,
 } from 'react-native';
 import { ArrowBack, Camera, EyeOff } from '../../Assets/svg';
 
@@ -17,6 +18,30 @@ const SignUp = ({ navigation }: any) => {
   const [confirmPassword, setConfirmPassword] = useState('');
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
+
+  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+  const handleSignUp = () => {
+    if (!name || !email || !password || !confirmPassword) {
+      Alert.alert('Error', 'Please fill in all fields.');
+      return;
+    }
+    if (!emailRegex.test(email)) {
+      Alert.alert('Error', 'Please enter a valid email address.');
+      return;
+    }
+    if (password.length < 6) {
+      Alert.alert('Error', 'Password must be at least 6 characters long.');
+      return;
+    }
+    if (password !== confirmPassword) {
+      Alert.alert('Error', 'Passwords do not match.');
+      return;
+    }
+
+    // ✅ Navigate to Email Verification screen after successful validation
+    navigation.navigate('EmailVerification' as never);
+  };
 
   return (
     <ScrollView style={styles.container}>
@@ -50,6 +75,8 @@ const SignUp = ({ navigation }: any) => {
         style={styles.input}
         placeholder="Email"
         placeholderTextColor="#888"
+        keyboardType="email-address"
+        autoCapitalize="none"
         value={email}
         onChangeText={setEmail}
       />
@@ -63,7 +90,6 @@ const SignUp = ({ navigation }: any) => {
           onChangeText={setPassword}
         />
         <TouchableOpacity onPress={() => setShowPassword(!showPassword)}>
-          {/* <Icon name={showPassword ? 'eye-off' : 'eye'} size={20} color="#888" /> */}
           <EyeOff width={22} height={22} />
         </TouchableOpacity>
       </View>
@@ -79,15 +105,11 @@ const SignUp = ({ navigation }: any) => {
         <TouchableOpacity
           onPress={() => setShowConfirmPassword(!showConfirmPassword)}
         >
-          {/* <Icon name={showConfirmPassword ? 'eye-off' : 'eye'} size={20} color="#888" /> */}
           <EyeOff width={22} height={22} />
         </TouchableOpacity>
       </View>
 
-      <TouchableOpacity
-        style={styles.button}
-        onPress={() => navigation.navigate('EmailVerification' as never)}
-      >
+      <TouchableOpacity style={styles.button} onPress={handleSignUp}>
         <Text style={styles.buttonText}>Sign Up</Text>
       </TouchableOpacity>
 
