@@ -10,8 +10,10 @@ import {
   ScrollView,
 } from 'react-native';
 import { ArrowForward_red, EyeOff, Logo } from '../../Assets/svg';
+import { useNavigation } from '@react-navigation/native';
 
 const LoginScreen = () => {
+  const navigation = useNavigation();
   const [passwordVisible, setPasswordVisible] = useState(false);
 
   return (
@@ -68,9 +70,11 @@ const LoginScreen = () => {
         <Text style={styles.loginButtonText}>Log In</Text>
       </TouchableOpacity>
 
-      <Text style={styles.signupText}>
-        Don’t have an account? <Text style={styles.signupLink}>Signup</Text>
-      </Text>
+      <TouchableOpacity onPress={() => navigation.navigate('SignUp' as never)}>
+        <Text style={styles.signupText}>
+          Don't have an account? <Text style={styles.signupLink}>Signup</Text>
+        </Text>
+      </TouchableOpacity>
     </ScrollView>
   );
 };
