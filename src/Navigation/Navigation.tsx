@@ -12,6 +12,7 @@ import SignUp from '../Screens/Auth/SignUp';
 import EmailVerification from '../Screens/Auth/EmailVerification';
 import TermsOfUse from '../Screens/Auth/TermsOfUse';
 import PrivacyPolicy from '../Screens/Auth/PrivacyPolicy';
+import ForgotPassword from '../Screens/Auth/ForgotPassword';
 
 const Stack = createStackNavigator();
 
@@ -20,6 +21,7 @@ const Navigation = () => {
     <Stack.Navigator screenOptions={{ headerShown: false }}>
       <Stack.Screen name="GetStarted" component={GetStarted} />
       <Stack.Screen name="Login" component={Login} />
+      <Stack.Screen name="ForgotPassword" component={ForgotPassword} />
       <Stack.Screen name="SignUp" component={SignUp} />
       <Stack.Screen name="EmailVerification" component={EmailVerification} />
       <Stack.Screen name="TermsOfUse" component={TermsOfUse} />
