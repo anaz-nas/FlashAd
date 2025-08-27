@@ -8,13 +8,35 @@ import {
   TouchableOpacity,
   TextInput,
   ScrollView,
+  Alert,
 } from 'react-native';
 import { ArrowForward_red, EyeOff, Logo } from '../../Assets/svg';
 import { useNavigation } from '@react-navigation/native';
 
 const LoginScreen = () => {
   const navigation = useNavigation();
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
   const [passwordVisible, setPasswordVisible] = useState(false);
+
+  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+  const handleLogin = () => {
+    if (!email || !password) {
+      Alert.alert('Error', 'Please fill in both fields.');
+      return;
+    }
+    if (!emailRegex.test(email)) {
+      Alert.alert('Error', 'Please enter a valid email address.');
+      return;
+    }
+    if (password.length < 6) {
+      Alert.alert('Error', 'Password must be at least 6 characters long.');
+      return;
+    }
+
+    navigation.navigate('Home' as never);
+  };
 
   return (
     <ScrollView style={styles.container}>
@@ -45,6 +67,9 @@ const LoginScreen = () => {
         placeholderTextColor="#999"
         style={styles.input}
         keyboardType="email-address"
+        autoCapitalize="none"
+        value={email}
+        onChangeText={setEmail}
       />
 
       <View style={styles.passwordContainer}>
@@ -53,6 +78,8 @@ const LoginScreen = () => {
           placeholderTextColor="#999"
           secureTextEntry={!passwordVisible}
           style={[styles.input, { flex: 1, marginBottom: 0, borderWidth: 0 }]}
+          value={password}
+          onChangeText={setPassword}
         />
         <TouchableOpacity
           onPress={() => setPasswordVisible(!passwordVisible)}
@@ -66,7 +93,7 @@ const LoginScreen = () => {
         <Text style={styles.forgotText}>Forgot Password?</Text>
       </TouchableOpacity>
 
-      <TouchableOpacity style={styles.loginButton}>
+      <TouchableOpacity style={styles.loginButton} onPress={handleLogin}>
         <Text style={styles.loginButtonText}>Log In</Text>
       </TouchableOpacity>
 
