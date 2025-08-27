@@ -8,8 +8,10 @@ import {
 } from 'react-native';
 import React from 'react';
 import { ArrowForward } from '../../Assets/svg';
+import { useNavigation } from '@react-navigation/native';
 
 const GetStarted = () => {
+  const navigation = useNavigation();
   return (
     <View style={styles.container}>
       <ImageBackground
@@ -29,7 +31,10 @@ const GetStarted = () => {
             it at the moment of greatest impact.
           </Text>
 
-          <TouchableOpacity style={styles.button}>
+          <TouchableOpacity
+            style={styles.button}
+            onPress={() => navigation.navigate('Login' as never)}
+          >
             <Text style={styles.buttonText}>Get Started</Text>
             <ArrowForward height={24} width={24} />
           </TouchableOpacity>
