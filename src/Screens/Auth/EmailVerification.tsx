@@ -11,14 +11,13 @@ import { ArrowBack } from '../../Assets/svg';
 
 const EmailVerification = ({ navigation }: any) => {
   const [code, setCode] = useState(['', '', '', '']);
-  const inputs = useRef<Array<TextInput | null>>([]); // refs for inputs
+  const inputs = useRef<Array<TextInput | null>>([]);
 
   const handleChange = (text: string, index: number) => {
     const newCode = [...code];
     newCode[index] = text;
     setCode(newCode);
 
-    // move to next input automatically
     if (text && index < inputs.current.length - 1) {
       inputs.current[index + 1]?.focus();
     }
@@ -48,7 +47,9 @@ const EmailVerification = ({ navigation }: any) => {
         {code.map((digit, index) => (
           <TextInput
             key={index}
-            ref={ref => (inputs.current[index] = ref)}
+            ref={ref => {
+              inputs.current[index] = ref;
+            }}
             style={styles.codeInput}
             keyboardType="numeric"
             maxLength={1}
