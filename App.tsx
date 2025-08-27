@@ -1,10 +1,22 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { StatusBar, StyleSheet, View } from 'react-native';
 import 'react-native-gesture-handler';
 import MainApp from './src/MainApp';
+import BootSplash from 'react-native-bootsplash';
 
 function App() {
   const isDarkMode = 'dark';
+
+  useEffect(() => {
+    const init = async () => {
+      // ...do multiple sync or async tasks if needed
+    };
+
+    init().finally(async () => {
+      await BootSplash.hide({ fade: true });
+      console.log('BootSplash has been hidden successfully');
+    });
+  }, []);
 
   return (
     <View style={styles.container}>
