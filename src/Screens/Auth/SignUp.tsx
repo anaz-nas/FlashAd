@@ -120,7 +120,15 @@ const SignUp = ({ navigation }: any) => {
         >
           Terms of Use
         </Text>{' '}
-        and <Text style={styles.link}>Privacy Policy</Text>.
+        {'\n'}
+        and{' '}
+        <Text
+          style={styles.link}
+          onPress={() => navigation.navigate('PrivacyPolicy')}
+        >
+          Privacy Policy
+        </Text>
+        .
       </Text>
     </ScrollView>
   );
