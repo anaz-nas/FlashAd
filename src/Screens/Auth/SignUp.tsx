@@ -6,6 +6,7 @@ import {
   StyleSheet,
   TouchableOpacity,
   Image,
+  ScrollView,
 } from 'react-native';
 import { ArrowBack, Camera, EyeOff } from '../../Assets/svg';
 
@@ -18,7 +19,7 @@ const SignUp = ({ navigation }: any) => {
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
 
   return (
-    <View style={styles.container}>
+    <ScrollView style={styles.container}>
       <TouchableOpacity
         onPress={() => navigation.goBack()}
         style={styles.backButton}
@@ -83,7 +84,10 @@ const SignUp = ({ navigation }: any) => {
         </TouchableOpacity>
       </View>
 
-      <TouchableOpacity style={styles.button}>
+      <TouchableOpacity
+        style={styles.button}
+        onPress={() => navigation.navigate('EmailVerification' as never)}
+      >
         <Text style={styles.buttonText}>Sign Up</Text>
       </TouchableOpacity>
 
@@ -92,12 +96,12 @@ const SignUp = ({ navigation }: any) => {
         <Text style={styles.link}>Terms of Use</Text> and{' '}
         <Text style={styles.link}>Privacy Policy</Text>.
       </Text>
-    </View>
+    </ScrollView>
   );
 };
 
 const styles = StyleSheet.create({
-  container: { flex: 1, backgroundColor: '#fff', paddingHorizontal: 20 },
+  container: { flex: 1, backgroundColor: '#fff', paddingHorizontal: 15 },
   backButton: { marginTop: 20, marginBottom: 10 },
   title: { fontSize: 23, fontWeight: 'bold', marginBottom: 20, marginTop: 5 },
   profileWrapper: {
