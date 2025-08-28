@@ -29,9 +29,43 @@ const dataByTab: Record<string, any[]> = {
       title: 'Bucket of Ponies $6.00 ',
       titledesc: '10 at the desk',
       subtitle: 'Duration: 6h',
-      image: 'https://images.pexels.com/photos/699953/pexels-photo-699953.jpeg',
+      image:
+        'https://images.pexels.com/photos/1410235/pexels-photo-1410235.jpeg',
       tag: 'Fasttrack',
+    },
+    {
+      id: '33',
+      title: 'Alfredo Pasta $8.99',
+      titledesc: 'Early bird 4 to 6 pm',
+      subtitle: '15m',
+      image:
+        'https://images.pexels.com/photos/12824411/pexels-photo-12824411.jpeg',
+      tag: 'Maybay',
+    },
+    {
+      id: '43',
+      title: 'Alfredo Pasta $8.99',
+      titledesc: 'Early bird 4 to 6 pm',
+      subtitle: '15m',
+      image: 'https://images.pexels.com/photos/416471/pexels-photo-416471.jpeg',
+      tag: 'Maybay',
       claimed: '20 claimed',
+    },
+    {
+      id: '53',
+      title: 'Alfredo Pasta $8.99',
+      titledesc: 'Early bird 4 to 6 pm',
+      subtitle: '15m',
+      image: 'https://images.pexels.com/photos/808941/pexels-photo-808941.jpeg',
+      tag: 'Maybay',
+    },
+    {
+      id: '63',
+      title: 'Alfredo Pasta $8.99',
+      titledesc: 'Early bird 4 to 6 pm',
+      subtitle: '15m',
+      image: 'https://images.pexels.com/photos/699953/pexels-photo-699953.jpeg',
+      tag: 'Maybay',
     },
   ],
   'Bars/Happy Hour': [
@@ -155,26 +189,28 @@ const HomeScreen = ({ navigation }: any) => {
               source={{ uri: item.image }}
               style={styles.cardImage}
             >
-              <View
-                style={{
-                  backgroundColor: 'white',
-                  borderRadius: 20,
-                  padding: 4,
-                  position: 'absolute',
-                  bottom: 10,
-                  flexDirection: 'row',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  paddingHorizontal: 10,
-                }}
-              >
-                <Acceblity width={12} height={12} />
-                <Text
-                  style={{ color: '##161A1D', fontSize: 12, marginLeft: 5 }}
+              {item?.claimed && (
+                <View
+                  style={{
+                    backgroundColor: 'white',
+                    borderRadius: 20,
+                    padding: 4,
+                    position: 'absolute',
+                    bottom: 10,
+                    flexDirection: 'row',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    paddingHorizontal: 10,
+                  }}
                 >
-                  {item?.claimed}
-                </Text>
-              </View>
+                  <Acceblity width={12} height={12} />
+                  <Text
+                    style={{ color: '##161A1D', fontSize: 12, marginLeft: 5 }}
+                  >
+                    {item?.claimed}
+                  </Text>
+                </View>
+              )}
             </ImageBackground>
             <Text style={styles.tagText}>{item.tag}</Text>
             <Text style={styles.cardTitle} numberOfLines={1}>
