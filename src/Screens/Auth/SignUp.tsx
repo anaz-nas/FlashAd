@@ -9,7 +9,7 @@ import {
   ScrollView,
   Alert,
 } from 'react-native';
-import { ArrowBack, Camera, EyeOff } from '../../Assets/svg';
+import { ArrowBack, Camera, Eye, EyeOff } from '../../Assets/svg';
 
 const SignUp = ({ navigation }: any) => {
   const [name, setName] = useState('');
@@ -89,7 +89,11 @@ const SignUp = ({ navigation }: any) => {
           onChangeText={setPassword}
         />
         <TouchableOpacity onPress={() => setShowPassword(!showPassword)}>
-          <EyeOff width={22} height={22} />
+          {showPassword ? (
+            <EyeOff height={20} width={20} />
+          ) : (
+            <Eye height={20} width={20} />
+          )}
         </TouchableOpacity>
       </View>
       <View style={styles.passwordContainer}>
@@ -104,7 +108,11 @@ const SignUp = ({ navigation }: any) => {
         <TouchableOpacity
           onPress={() => setShowConfirmPassword(!showConfirmPassword)}
         >
-          <EyeOff width={22} height={22} />
+          {showConfirmPassword ? (
+            <EyeOff height={20} width={20} />
+          ) : (
+            <Eye height={20} width={20} />
+          )}
         </TouchableOpacity>
       </View>
 

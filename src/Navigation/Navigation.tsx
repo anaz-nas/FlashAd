@@ -111,11 +111,11 @@ const MainTabs = () => {
 const Navigation = () => {
   return (
     <Stack.Navigator screenOptions={{ headerShown: false }}>
-      <Stack.Screen name="ResetPassword" component={ResetPassword} />
       <Stack.Screen name="GetStarted" component={GetStarted} />
       <Stack.Screen name="MainTabs" component={MainTabs} />
-      <Stack.Screen name="LoginScreen" component={LoginScreen} />
+      <Stack.Screen name="Login" component={LoginScreen} />
       <Stack.Screen name="SignUp" component={SignUp} />
+      <Stack.Screen name="ResetPassword" component={ResetPassword} />
       <Stack.Screen name="ForgotPassword" component={ForgotPassword} />
       <Stack.Screen name="EmailVerification" component={EmailVerification} />
       <Stack.Screen name="TermsOfUse" component={TermsOfUse} />

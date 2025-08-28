@@ -10,7 +10,7 @@ import {
   ScrollView,
   Alert,
 } from 'react-native';
-import { ArrowForward_red, EyeOff, Logo } from '../../Assets/svg';
+import { ArrowForward_red, Eye, EyeOff, Logo } from '../../Assets/svg';
 import { useNavigation } from '@react-navigation/native';
 
 const LoginScreen = () => {
@@ -35,7 +35,7 @@ const LoginScreen = () => {
       return;
     }
 
-    navigation.navigate('Home' as never);
+    navigation.navigate('MainTabs' as never);
   };
 
   return (
@@ -85,7 +85,11 @@ const LoginScreen = () => {
           onPress={() => setPasswordVisible(!passwordVisible)}
           style={styles.eyeIcon}
         >
-          <EyeOff width={22} height={22} />
+          {passwordVisible ? (
+            <EyeOff height={20} width={20} />
+          ) : (
+            <Eye height={20} width={20} />
+          )}
         </TouchableOpacity>
       </View>
 
