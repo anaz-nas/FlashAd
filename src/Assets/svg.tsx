@@ -16,6 +16,10 @@ import MarketInActive from '../Assets/SVG/MarketInActive.svg';
 import ProfileActive from '../Assets/SVG/ProfileActive.svg';
 import ProfileInactive from '../Assets/SVG/ProfileInactive.svg';
 
+import Filter from '../Assets/SVG/Filter.svg';
+import Search from '../Assets/SVG/Search.svg';
+import Acceblity from '../Assets/SVG/Acceblity.svg';
+
 export {
   ArrowForward,
   ArrowForward_red,
@@ -33,4 +37,7 @@ export {
   MarketInActive,
   ProfileActive,
   ProfileInactive,
+  Filter,
+  Search,
+  Acceblity,
 };

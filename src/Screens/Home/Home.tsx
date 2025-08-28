@@ -1,3 +1,4 @@
+/* eslint-disable react-native/no-inline-styles */
 import React, { useState } from 'react';
 import {
   View,
@@ -6,10 +7,9 @@ import {
   FlatList,
   ScrollView,
   TouchableOpacity,
-  Image,
   ImageBackground,
 } from 'react-native';
-import { ArrowBackWhite } from '../../Assets/svg';
+import { Acceblity, Filter, Logo, Search } from '../../Assets/svg';
 
 const tabs = ['Dining', 'Bars/Happy Hour', 'Storefront', 'Entertainment'];
 
@@ -17,68 +17,88 @@ const dataByTab: Record<string, any[]> = {
   Dining: [
     {
       id: '1',
-      title: 'Alfredo Pasta $8.99 Early bird 4 to 6pm',
-      subtitle: 'Ends in: 15m',
-      image: 'https://via.placeholder.com/150',
-      tag: '🔥 Hot Sale',
+      title: 'Alfredo Pasta $8.99',
+      titledesc: 'Early bird 4 to 6 pm',
+      subtitle: '15m',
+      image: 'https://images.pexels.com/photos/699953/pexels-photo-699953.jpeg',
+      tag: 'Maybay',
+      claimed: '10/30 claimed',
     },
     {
       id: '2',
-      title: 'Bucket of Ponies $6.00 (10 at the desk)',
+      title: 'Bucket of Ponies $6.00 ',
+      titledesc: '10 at the desk',
       subtitle: 'Duration: 6h',
-      image: 'https://via.placeholder.com/150',
+      image: 'https://images.pexels.com/photos/699953/pexels-photo-699953.jpeg',
+      tag: 'Fasttrack',
+      claimed: '20 claimed',
     },
   ],
   'Bars/Happy Hour': [
     {
       id: '3',
       title: 'Happy Hour Margarita $5',
-      subtitle: 'Ends in: 1h',
-      image: 'https://via.placeholder.com/150',
+      subtitle: '1h',
+      image: 'https://images.pexels.com/photos/699953/pexels-photo-699953.jpeg',
+      tag: 'Indie Events',
     },
     {
       id: '4',
       title: '2 for 1 Beer Pitchers',
       subtitle: 'Duration: 3h',
-      image: 'https://via.placeholder.com/150',
+      image: 'https://images.pexels.com/photos/699953/pexels-photo-699953.jpeg',
+      tag: 'Hot Sale',
     },
   ],
   Storefront: [
     {
       id: '5',
       title: 'Summer Super Sale 50% off Sunglasses',
-      subtitle: 'Ends in: 2h',
-      image: 'https://via.placeholder.com/150',
+      subtitle: '2h',
+      image: 'https://images.pexels.com/photos/699953/pexels-photo-699953.jpeg',
+      tag: 'Hot Sale',
     },
     {
       id: '6',
       title: 'Designer Shoes 30% Off',
-      subtitle: 'Ends in: 5h',
-      image: 'https://via.placeholder.com/150',
+      subtitle: '5h',
+      image: 'https://images.pexels.com/photos/699953/pexels-photo-699953.jpeg',
+      tag: 'Hot Sale',
     },
   ],
   Entertainment: [
     {
       id: '7',
       title: 'Indie Events Tickets selling fast!',
-      subtitle: 'Ends in: 2h',
-      image: 'https://via.placeholder.com/150',
+      subtitle: '2h',
+      image: 'https://images.pexels.com/photos/699953/pexels-photo-699953.jpeg',
+      tag: 'Hot Sale',
     },
     {
       id: '8',
       title: 'Standup Comedy Night',
       subtitle: 'Tonight 8pm',
-      image: 'https://via.placeholder.com/150',
+      image: 'https://images.pexels.com/photos/699953/pexels-photo-699953.jpeg',
+      tag: 'Hot Sale',
     },
   ],
 };
 
-const ScrollableTabs = ({ selectedTab, setSelectedTab }) => {
+type ScrollableTabsProps = {
+  selectedTab: string;
+  setSelectedTab: React.Dispatch<React.SetStateAction<string>>;
+};
+
+const ScrollableTabs: React.FC<ScrollableTabsProps> = ({
+  selectedTab,
+  setSelectedTab,
+}) => {
   return (
     <ScrollView
       horizontal
       showsHorizontalScrollIndicator={false}
       contentContainerStyle={styles.tabContainer}
+      // style={{ height: 50, backgroundColor: 'red' }}
     >
       {tabs.map(tab => (
         <TouchableOpacity
@@ -111,17 +131,19 @@ const HomeScreen = ({ navigation }: any) => {
         style={styles.header}
         source={require('../../Assets/PNG/BlurBg.jpg')}
       >
-        <TouchableOpacity onPress={() => navigation.goBack()}>
-          <ArrowBackWhite width={17} height={17} />
+        <TouchableOpacity>
+          <Filter width={28} height={28} />
         </TouchableOpacity>
 
-        <Text style={styles.headerTitle}>Privacy Policy</Text>
+        <Logo width={80} height={31} />
+        <TouchableOpacity>
+          <Search width={18} height={18} />
+        </TouchableOpacity>
       </ImageBackground>
-      S{' '}
-      <ScrollableTabs
+      {/* <ScrollableTabs
         selectedTab={selectedTab}
         setSelectedTab={setSelectedTab}
-      />
+      /> */}
       <FlatList
         data={currentData}
         keyExtractor={item => item.id}
@@ -129,16 +151,42 @@ const HomeScreen = ({ navigation }: any) => {
         contentContainerStyle={styles.grid}
         renderItem={({ item }) => (
           <View style={styles.card}>
-            <Image source={{ uri: item.image }} style={styles.cardImage} />
-            {item.tag && (
-              <View style={styles.tag}>
-                <Text style={styles.tagText}>{item.tag}</Text>
+            <ImageBackground
+              source={{ uri: item.image }}
+              style={styles.cardImage}
+            >
+              <View
+                style={{
+                  backgroundColor: 'white',
+                  borderRadius: 20,
+                  padding: 4,
+                  position: 'absolute',
+                  bottom: 10,
+                  flexDirection: 'row',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  paddingHorizontal: 10,
+                }}
+              >
+                <Acceblity width={12} height={12} />
+                <Text
+                  style={{ color: '##161A1D', fontSize: 12, marginLeft: 5 }}
+                >
+                  {item?.claimed}
+                </Text>
               </View>
-            )}
-            <Text style={styles.cardTitle} numberOfLines={2}>
+            </ImageBackground>
+            <Text style={styles.tagText}>{item.tag}</Text>
+            <Text style={styles.cardTitle} numberOfLines={1}>
               {item.title}
             </Text>
-            <Text style={styles.cardSubtitle}>{item.subtitle}</Text>
+            <Text style={styles.cardTitledesc} numberOfLines={2}>
+              {item?.titledesc}
+            </Text>
+            <Text style={styles.cardSubtitle}>
+              Ends in:{' '}
+              <Text style={styles.cardSubtitleValue}>{item.subtitle}</Text>
+            </Text>
           </View>
         )}
       />
@@ -155,6 +203,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     paddingHorizontal: 15,
+    justifyContent: 'space-between',
   },
   headerTitle: {
     flex: 1,
@@ -163,16 +212,26 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     textAlign: 'center',
   },
-  tabContainer: { paddingHorizontal: 10 },
+  tabContainer: {
+    paddingHorizontal: 10,
+    marginTop: 15,
+    height: 45,
+  },
   tab: {
     paddingVertical: 8,
     paddingHorizontal: 16,
-    borderRadius: 20,
+    borderRadius: 10,
     backgroundColor: '#F5F5F5',
     marginRight: 10,
+    height: 45,
+    justifyContent: 'center',
   },
-  activeTab: { backgroundColor: '#BA181B' },
-  tabText: { color: '#333' },
+  activeTab: {
+    backgroundColor: '#BA181B',
+    height: 45,
+    justifyContent: 'center',
+  },
+  tabText: { color: '#989898', fontSize: 12 },
   activeTabText: { color: '#fff', fontWeight: '600' },
   grid: { padding: 10 },
   card: {
@@ -183,7 +242,12 @@ const styles = StyleSheet.create({
     padding: 10,
     elevation: 2,
   },
-  cardImage: { width: '100%', height: 100, borderRadius: 10 },
+  cardImage: {
+    width: '100%',
+    height: 138,
+    borderRadius: 10,
+    alignItems: 'center',
+  },
   tag: {
     position: 'absolute',
     top: 10,
@@ -193,9 +257,16 @@ const styles = StyleSheet.create({
     paddingVertical: 4,
     borderRadius: 6,
   },
-  tagText: { color: '#fff', fontSize: 10 },
-  cardTitle: { fontSize: 14, fontWeight: '600', marginTop: 8 },
-  cardSubtitle: { fontSize: 12, color: '#777', marginTop: 4 },
+  tagText: { color: '#4E565B', fontSize: 12, fontWeight: 'bold', marginTop: 8 },
+  cardTitle: { fontSize: 14, fontWeight: 'bold', marginTop: 4 },
+  cardTitledesc: { fontSize: 14, fontWeight: 'bold', marginTop: 0 },
+  cardSubtitle: { fontSize: 13, color: '#161A1D', marginTop: 4 },
+  cardSubtitleValue: {
+    fontSize: 12,
+    color: '#565050',
+    fontWeight: 'bold',
+    marginTop: 4,
+  },
   bottomNav: {
     flexDirection: 'row',
     height: 60,
