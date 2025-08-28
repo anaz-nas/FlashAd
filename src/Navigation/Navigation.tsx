@@ -19,6 +19,14 @@ import {
   ProfileActive,
   ProfileInactive,
 } from '../Assets/svg';
+import LoginScreen from '../Screens/Auth/Login';
+import SignUp from '../Screens/Auth/SignUp';
+import GetStarted from '../Screens/Auth/GetStarted';
+import ForgotPassword from '../Screens/Auth/ForgotPassword';
+import EmailVerification from '../Screens/Auth/EmailVerification';
+import TermsOfUse from '../Screens/Auth/TermsOfUse';
+import PrivacyPolicy from '../Screens/Auth/PrivacyPolicy';
+import ResetPassword from '../Screens/Auth/ResetPassword';
 
 const Tab = createBottomTabNavigator();
 const Stack = createStackNavigator();
@@ -103,7 +111,15 @@ const MainTabs = () => {
 const Navigation = () => {
   return (
     <Stack.Navigator screenOptions={{ headerShown: false }}>
+      <Stack.Screen name="ResetPassword" component={ResetPassword} />
+      <Stack.Screen name="GetStarted" component={GetStarted} />
       <Stack.Screen name="MainTabs" component={MainTabs} />
+      <Stack.Screen name="LoginScreen" component={LoginScreen} />
+      <Stack.Screen name="SignUp" component={SignUp} />
+      <Stack.Screen name="ForgotPassword" component={ForgotPassword} />
+      <Stack.Screen name="EmailVerification" component={EmailVerification} />
+      <Stack.Screen name="TermsOfUse" component={TermsOfUse} />
+      <Stack.Screen name="PrivacyPolicy" component={PrivacyPolicy} />
     </Stack.Navigator>
   );
 };

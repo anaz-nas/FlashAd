@@ -19,6 +19,7 @@ import ProfileInactive from '../Assets/SVG/ProfileInactive.svg';
 import Filter from '../Assets/SVG/Filter.svg';
 import Search from '../Assets/SVG/Search.svg';
 import Acceblity from '../Assets/SVG/Acceblity.svg';
+import Eye from '../Assets/SVG/Eye.svg';
 
 export {
   ArrowForward,
@@ -40,4 +41,5 @@ export {
   Filter,
   Search,
   Acceblity,
+  Eye,
 };
