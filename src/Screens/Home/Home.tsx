@@ -132,7 +132,6 @@ const ScrollableTabs: React.FC<ScrollableTabsProps> = ({
       horizontal
       showsHorizontalScrollIndicator={false}
       contentContainerStyle={styles.tabContainer}
-      // style={{ height: 50, backgroundColor: 'red' }}
     >
       {tabs.map(tab => (
         <TouchableOpacity
@@ -174,10 +173,10 @@ const HomeScreen = ({ navigation }: any) => {
           <Search width={18} height={18} />
         </TouchableOpacity>
       </ImageBackground>
-      {/* <ScrollableTabs
+      <ScrollableTabs
         selectedTab={selectedTab}
         setSelectedTab={setSelectedTab}
-      /> */}
+      />
       <FlatList
         data={currentData}
         keyExtractor={item => item.id}
@@ -251,7 +250,7 @@ const styles = StyleSheet.create({
   tabContainer: {
     paddingHorizontal: 10,
     marginTop: 15,
-    height: 45,
+    height: 60,
   },
   tab: {
     paddingVertical: 8,
