@@ -153,7 +153,7 @@ const ScrollableTabs: React.FC<ScrollableTabsProps> = ({
   );
 };
 
-const HomeScreen = ({ navigation }: any) => {
+const HomeScreen = () => {
   const [selectedTab, setSelectedTab] = useState(tabs[0]);
 
   const currentData = dataByTab[selectedTab] || [];
@@ -187,6 +187,7 @@ const HomeScreen = ({ navigation }: any) => {
             <ImageBackground
               source={{ uri: item.image }}
               style={styles.cardImage}
+              imageStyle={{ borderRadius: 10 }}
             >
               {item?.claimed && (
                 <View
@@ -268,7 +269,7 @@ const styles = StyleSheet.create({
   },
   tabText: { color: '#989898', fontSize: 12 },
   activeTabText: { color: '#fff', fontWeight: '600' },
-  grid: { padding: 10 },
+  grid: { padding: 10, paddingBottom: 20 },
   card: {
     flex: 1,
     backgroundColor: '#fff',
